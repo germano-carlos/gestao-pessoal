@@ -5,4 +5,8 @@
     <RootNamespace>gestao_pessoal</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\images\" />
+  </ItemGroup>
+
 </Project>

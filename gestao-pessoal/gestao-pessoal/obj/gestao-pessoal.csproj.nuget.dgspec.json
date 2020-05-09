@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\git\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj": {}
+    "C:\\www\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj": {}
   },
   "projects": {
-    "C:\\git\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj": {
+    "C:\\www\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\git\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj",
+        "projectUniqueName": "C:\\www\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj",
         "projectName": "gestao-pessoal",
-        "projectPath": "C:\\git\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj",
-        "packagesPath": "C:\\Users\\Carlos\\.nuget\\packages\\",
-        "outputPath": "C:\\git\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\obj\\",
+        "projectPath": "C:\\www\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal.csproj",
+        "packagesPath": "C:\\Users\\Carlos Germano\\.nuget\\packages\\",
+        "outputPath": "C:\\www\\gestao-pessoal\\gestao-pessoal\\gestao-pessoal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carlos Germano\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
