@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using gestao_pessoal.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,13 +30,12 @@ namespace gestao_pessoal.Controllers
 
         // POST: Tarefas/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(string nomeTarefa, string dataInicio, string dataFim, string prioridades, string obs)
         {
             try
             {
-                // TODO: Add insert logic here
-                return RedirectToAction(nameof(Index));
+                Tarefas tarefa = Tarefas.criar( nomeTarefa,dataInicio,dataFim,prioridades,obs);
+                return RedirectToRoute(new { controller = "Tarefas", action = "Create" });
             }
             catch
             {
