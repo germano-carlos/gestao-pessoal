@@ -15,13 +15,7 @@ namespace gestao_pessoal.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: Usuario/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View("Views/Usuario/home.cshtml");
         }
 
         // GET: Usuario/Create
@@ -37,60 +31,13 @@ namespace gestao_pessoal.Controllers
             try
             {
                 Usuario usuario = Usuario.criar(useremail, username, userpassword);
-                return View("Views/Usuario/home.cshtml");
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             catch (MySqlException e)
             {
-                return View("Views/Home/Index.cshtml");
+                return RedirectToRoute(new { controller = "Usuario", action = "Create" });
             }
         }
-
-        // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Usuario/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Usuario/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Usuario/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
 
         public ActionResult checkCredentialsAndLog(string username, string userpassword)
         {
@@ -99,13 +46,13 @@ namespace gestao_pessoal.Controllers
                 Usuario usuario = Usuario.obter(username, userpassword);
 
                 if(usuario == null)
-                    return View("Views/Usuario/home.cshtml");
+                    return RedirectToRoute(new { controller = "Home", action = "Index" });
 
-                return View("Views/Home/Index.cshtml");
+                return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
             catch (MySqlException e)
             {
-                return View("Views/Home/Index.cshtml");
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
         }
     }
