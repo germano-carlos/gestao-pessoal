@@ -31,9 +31,9 @@ public class Conexao
  
     // Variaveis de configuração de acesso ao banco de dados
     private string Server = "localhost";
-    private string Database = "Escola";
+    private string Database = "gestao-pessoal";
     private string Usuario = "root";
-    private string Senha = "123456";
+    private string Senha = "root";
  
  
     public MySqlConnection conn;

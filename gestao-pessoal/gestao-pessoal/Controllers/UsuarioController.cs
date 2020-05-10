@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using gestao_pessoal.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace gestao_pessoal.Controllers
 {
@@ -35,12 +36,12 @@ namespace gestao_pessoal.Controllers
         {
             try
             {
-                Usuario usuario = new Usuario(useremail,username,userpassword);
+                Usuario usuario = Usuario.criar(useremail, username, userpassword);
                 return View("Views/Usuario/home.cshtml");
             }
-            catch
+            catch (MySqlException e)
             {
-                return View();
+                return View("Views/Home/Index.cshtml");
             }
         }
 
@@ -87,6 +88,24 @@ namespace gestao_pessoal.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+
+        public ActionResult checkCredentialsAndLog(string username, string userpassword)
+        {
+            try
+            { 
+                Usuario usuario = Usuario.obter(username, userpassword);
+
+                if(usuario == null)
+                    return View("Views/Usuario/home.cshtml");
+
+                return View("Views/Home/Index.cshtml");
+            }
+            catch (MySqlException e)
+            {
+                return View("Views/Home/Index.cshtml");
             }
         }
     }
