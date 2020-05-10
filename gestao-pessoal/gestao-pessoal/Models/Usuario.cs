@@ -10,8 +10,12 @@ namespace gestao_pessoal.Models
         public string nome { get; set; }
         public string email { get; set; }
         public string senha { get; set; }
-        public string sexo { get; set; }
-        public string dataNascimento { get; set; }
-        public string idade { get; set; }
+
+        public Usuario(string useremail, string username, string userpassword)
+        {
+            this.email = useremail;
+            this.nome = username;
+            this.senha = userpassword;
+        }
     }
 }
