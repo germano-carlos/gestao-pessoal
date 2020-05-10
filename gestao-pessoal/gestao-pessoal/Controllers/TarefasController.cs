@@ -12,7 +12,7 @@ namespace gestao_pessoal.Controllers
         // GET: Tarefas
         public ActionResult Index()
         {
-            return View("Views/Home/teste.cshtml");
+            return View("Views/Tarefas/criarTarefas.cshtml");
         }
 
         // GET: Tarefas/Details/5
@@ -24,7 +24,7 @@ namespace gestao_pessoal.Controllers
         // GET: Tarefas/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Views/Tarefas/criarTarefas.cshtml");
         }
 
         // POST: Tarefas/Create
@@ -35,7 +35,6 @@ namespace gestao_pessoal.Controllers
             try
             {
                 // TODO: Add insert logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch

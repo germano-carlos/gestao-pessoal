@@ -1,0 +1,82 @@
+﻿@page
+@model gestao_pessoal.Views.Tarefas.criarTarefasModel
+@{
+}
+
+<div class="home-btn d-none d-sm-block">
+    <a href="Index.cshtml" class="text-white"><i class="fas fa-home h2"></i></a>
+</div>
+
+<!-- Begin page -->
+<div class="taskimage"></div>
+<div class="wrapper-page account-page-full">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="p-3">
+                @using (Html.BeginForm("Create", "Tarefas"))
+                {
+                    <form class="form-horizontal m-t-30" action="/Usuario/Create" method="POST">
+                        <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+                        <div class="form-group">
+                            <label for="useremail">Nome Tarefa</label>
+                            <input type="email" class="form-control" name="useremail" id="useremail" placeholder="Insira o nome da tarefa">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Data Inicio</label>
+                            <div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                    </div>
+                                </div><!-- input-group -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userpassword">Data Final</label>
+                            <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Insira a data no formato: 'yyyy-mm-dd'">
+                        </div>
+                        <div class="form-group">
+                            <label for="prioridades">Selecione a prioridade da tarefa: </label>
+                            <select class="form-control select2">
+                                <option value="0"><-- Selecione a Prioridade --></option>
+                                <option value="1">Muito Baixa</option>
+                                <option value="2">Baixa</option>
+                                <option value="3">Média</option>
+                                <option value="4">Alta</option>
+                                <option value="5">Muito Alta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Insira Observações a sua tarefa</label>
+                            <div>
+                                <textarea required class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row m-t-20">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Criar Tarefa</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- end wrapper-page -->
+<!-- jQuery  -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.slimscroll.js"></script>
+<script src="assets/js/waves.min.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+

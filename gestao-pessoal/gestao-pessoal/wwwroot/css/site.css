@@ -4043,7 +4043,15 @@ Invoice
     width: 100%;
     top: 0;
 }
-
+.taskimage {
+    background: url("../assets/images/planejamento.jpg");
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
 .account-page-full {
     left: 0;
     position: absolute;

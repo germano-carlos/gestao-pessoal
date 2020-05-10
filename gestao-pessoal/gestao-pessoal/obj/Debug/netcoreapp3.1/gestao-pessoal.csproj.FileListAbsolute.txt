@@ -123,3 +123,4 @@ C:\www\gestao-pessoal\gestao-pessoal\gestao-pessoal\bin\Debug\netcoreapp3.1\Syst
 C:\www\gestao-pessoal\gestao-pessoal\gestao-pessoal\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\www\gestao-pessoal\gestao-pessoal\gestao-pessoal\obj\Debug\netcoreapp3.1\Razor\Views\Home\cadastro.cshtml.g.cs
 C:\www\gestao-pessoal\gestao-pessoal\gestao-pessoal\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\home.cshtml.g.cs
+C:\www\gestao-pessoal\gestao-pessoal\gestao-pessoal\obj\Debug\netcoreapp3.1\Razor\Views\Tarefas\criarTarefas.cshtml.g.cs
