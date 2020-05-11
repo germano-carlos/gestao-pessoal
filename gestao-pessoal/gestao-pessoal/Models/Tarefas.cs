@@ -38,6 +38,14 @@ namespace gestao_pessoal.Models
             Conexao conexao = new Conexao(TipoConexao.Conexao.Classe);
             Tarefas tarefas = new Tarefas();
 
+            if (String.IsNullOrEmpty(nomeTarefa))
+                throw new Exception("O nome da tarefa é necessário, favor inserir");
+                
+            dataFim = String.IsNullOrEmpty(dataFim) ? "Não especificado" : dataFim;
+            dataInicio = String.IsNullOrEmpty(dataInicio) ? DateTime.Now.ToString("yyyy-mm-dd") : dataInicio;
+            prioridades = String.IsNullOrEmpty(prioridades) ? Prioridade.BAIXA.ToString() : prioridades;
+            obs = String.IsNullOrEmpty(obs) ? "Não especificado" : obs;
+
             conexao.OpenConexao();
             MySqlDataReader reader;
             string query = String.Format("INSERT INTO tarefa (nome,data_inicio,data_fim,observacoes,prioridade_id) VALUES ( '{0}', '{1}', '{2}', '{3}', '{4}')",nomeTarefa,dataInicio,dataFim,obs,prioridades);
