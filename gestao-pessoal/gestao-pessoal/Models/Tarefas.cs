@@ -40,7 +40,7 @@ namespace gestao_pessoal.Models
 
             conexao.OpenConexao();
             MySqlDataReader reader;
-            string query = String.Format("INSERT INTO tarefas (nome,data_inicio,data_fim,observacoes,prioridade_id) VALUES ( '{0}', '{1}', '{2}', '{3}', '{4}')",nomeTarefa,dataInicio,dataFim,obs,prioridades);
+            string query = String.Format("INSERT INTO tarefa (nome,data_inicio,data_fim,observacoes,prioridade_id) VALUES ( '{0}', '{1}', '{2}', '{3}', '{4}')",nomeTarefa,dataInicio,dataFim,obs,prioridades);
             MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
             cmd.CommandType = System.Data.CommandType.Text;
 
