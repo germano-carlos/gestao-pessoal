@@ -99,5 +99,22 @@ var db = {
             "nome": "Muito Baixa",
             "tempo_estimado": 24, //Tempo calculado em horas
         }
+    ],
+    tasksettings: [
+        {
+            "id":1,
+            "type":"Concluido",
+            "text": "text-success mr-1"
+        },
+        {
+            "id":2,
+            "type":"Atrasado",
+            "text": "text-danger mr-1"
+        },
+        {
+            "id":3,
+            "type":"Alerta",
+            "text": "text-warning mr-1"
+        }
     ]
 }
