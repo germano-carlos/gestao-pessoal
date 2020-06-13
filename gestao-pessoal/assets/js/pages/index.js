@@ -36,6 +36,7 @@ function submitFunction(event) {
                 }
 
                 localStorage.setItem("tasks", JSON.stringify(task));
+                localStorage.setItem("users", JSON.stringify(db.customerdata));
                 alert("Usuario encontrado, você será redirecionado");
                 window.location.replace("home.html")
             }

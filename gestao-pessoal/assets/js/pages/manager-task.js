@@ -2,6 +2,8 @@ $(document).ready(() => {
     /**
      * Carrega a dinâmica de listar as Tarefas do Local Storage
      */
+    
+    db.customerdata = JSON.parse(localStorage.getItem("users"));
 
     let htmlTask = '';
     var object = JSON.parse(localStorage.getItem("tasks"));

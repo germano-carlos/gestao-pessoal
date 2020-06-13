@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    db.customerdata = JSON.parse(localStorage.getItem("users"));
 
     let dependentes = localStorage.getItem("dependentes").split(',')
     let optionString = `<option value= ${ localStorage.getItem("id") }> ${ localStorage.getItem("nome") } </option> `;
