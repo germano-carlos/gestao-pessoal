@@ -142,15 +142,23 @@ $(document).ready(() => {
                         });;
             }
             else if(diff < 2)
-            {   return JSON.stringify({
+            {   
+                return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-warning mr-1'
                         });;
             }
             else if(done)
-            {   return JSON.stringify({
-                    event: 'Atrasado',
+            {   
+                return JSON.stringify({
+                    event: 'Concluído',
                     tag : 'text-success mr-1'
+                    });;
+            }
+            else{
+                return JSON.stringify({
+                    event: 'Ainda tem tempo',
+                    tag : 'text-info mr-1'
                     });;
             }
         }
@@ -175,6 +183,12 @@ $(document).ready(() => {
                     tag : 'text-success mr-1'
                     });;
             }
+            else{
+                return JSON.stringify({
+                    event: 'Ainda tem tempo',
+                    tag : 'text-info mr-1'
+                    });;
+            }
         }
         if(prioridade == 3)
         {
@@ -195,6 +209,12 @@ $(document).ready(() => {
             {   return JSON.stringify({
                     event: 'Atrasado',
                     tag : 'text-success mr-1'
+                    });;
+            }
+            else{
+                return JSON.stringify({
+                    event: 'Ainda tem tempo',
+                    tag : 'text-info mr-1'
                     });;
             }
         }
@@ -219,6 +239,12 @@ $(document).ready(() => {
                     tag : 'text-success mr-1'
                     });;
             }
+            else{
+                return JSON.stringify({
+                    event: 'Ainda tem tempo',
+                    tag : 'text-info mr-1'
+                    });;
+            }
         }
         if(prioridade == 5)
         {
@@ -239,6 +265,12 @@ $(document).ready(() => {
             {   return JSON.stringify({
                     event: 'Atrasado',
                     tag : 'text-success mr-1'
+                    });;
+            }
+            else{
+                return JSON.stringify({
+                    event: 'Ainda tem tempo',
+                    tag : 'text-info mr-1'
                     });;
             }
         }

@@ -72,6 +72,15 @@ var db = {
             "data_cadastro":"2020-06-07",
             "data_limite": null
         },
+        {
+            "id": 7,
+            "nome": "Testes Plataforma",
+            "prioridade_id": 1,
+            "responsavel_id": 1,
+            "possui_dependente": false,
+            "data_cadastro":"2020-06-07",
+            "data_limite": "2020-06-14 15:00:00"
+        },
     ],
     setting: [
         {
