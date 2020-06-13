@@ -62,6 +62,8 @@ $(document).ready(() => {
 
             localStorage.setItem("tasks", JSON.stringify(tasks))
 
+            alert('Tarefa Criada com sucesso, você pode visualiza-la em Tarefas -> Listar Tarefas');
+
         }
     })
 

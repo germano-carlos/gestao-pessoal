@@ -25,7 +25,8 @@ var db = {
             "responsavel_id": 1,
             "possui_dependente": false,
             "data_cadastro": null,
-            "data_limite": '2020-06-07 20:50:00'
+            "data_limite": '2020-06-07 20:50:00',
+            "status": 'Não Finalizado'
         },
         {
             "id": 2,
@@ -34,7 +35,8 @@ var db = {
             "responsavel_id": 2,
             "possui_dependente": true,
             "data_cadastro":"2020-06-07",
-            "data_limite": "2020-06-07 17:00:00"
+            "data_limite": "2020-06-07 17:00:00",
+            "status": 'Não Finalizado'
         },
         {
             "id": 3,
@@ -43,7 +45,8 @@ var db = {
             "responsavel_id": 3,
             "possui_dependente": true,
             "data_cadastro":"2020-06-07",
-            "data_limite": "2020-06-07 09:00:00"
+            "data_limite": "2020-06-07 09:00:00",
+            "status": 'Não Finalizado'
         },
         {
             "id": 4,
@@ -52,7 +55,8 @@ var db = {
             "responsavel_id": 3,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
-            "data_limite": null
+            "data_limite": null,
+            "status": 'Não Finalizado'
         },
         {
             "id": 5,
@@ -61,7 +65,8 @@ var db = {
             "responsavel_id": 4,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
-            "data_limite": null
+            "data_limite": null,
+            "status": 'Não Finalizado'
         },
         {
             "id": 6,
@@ -70,7 +75,8 @@ var db = {
             "responsavel_id": 4,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
-            "data_limite": null
+            "data_limite": null,
+            "status": 'Não Finalizado'
         },
         {
             "id": 7,
@@ -79,7 +85,8 @@ var db = {
             "responsavel_id": 1,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
-            "data_limite": "2020-06-14 15:00:00"
+            "data_limite": "2020-06-14 15:00:00",
+            "status": 'Não Finalizado'
         },
     ],
     setting: [

@@ -6,7 +6,7 @@ $(document).ready(() => {
     let htmlTask = '';
     var object = JSON.parse(localStorage.getItem("tasks"));
 
-    for(i = 0;i< object.length;i++)
+    for(i = 0;i < object.length;i++)
     {
         var settings = JSON.parse(getSettings(object[i].prioridade_id));
         var dataInicio = new Date();
@@ -23,6 +23,7 @@ $(document).ready(() => {
 
         var responsavelName = localStorage.getItem("nome");
         var responsavelId = localStorage.getItem("id");
+        var status = object[i].status == 'Concluido' ? 'checked'  : '';
 
         for(j=0;j<db.customerdata.length;j++)
         {
@@ -34,7 +35,7 @@ $(document).ready(() => {
         }
 
         htmlTask += `<tr class="task-item">' 
-                        <td style="width: 60px;">
+                        <td data-id="${object[i].id}" style="width: 60px;">
                             <img src="assets/images/users/user-2.jpg" alt="" class="thumb-sm rounded-circle">
                         </td>
                         <td data-nome="${object[i].nome}" > ${ localStorage.getItem("nome") }
@@ -54,6 +55,10 @@ $(document).ready(() => {
                         </td>
                         <td data-limite="${object[i].data_limite}">
                             ${ object[i].data_limite == null ? 'Não Especificado' : object[i].data_limite }
+                        </td>
+                        <td>
+                            <input ${status} class="checktask" name="switch${object[i].id}" type="checkbox" id="switch${object[i].id}" switch="bool"/>
+                            <label for="switch${object[i].id}" data-on-label="Yes" data-off-label="No"></label>
                         </td>
                         <td>
                             <div>
@@ -289,15 +294,22 @@ $(document).ready(() => {
 
     $('.resp').append(optionString)
 
+    /**
+     *  Validação do click do modal para começar a edição da tarefa
+     */
 
+    
     $(document).on("click", ".btn-sm", function(){
-        var nomeTarefa = $(this).closest('tr').find('td[data-nome]').data('nome');
-        var prioridade = $(this).closest('tr').find('td[data-prioridade]').data('prioridade');
-        var dataLimite = $(this).closest('tr').find('td[data-limite]').data('limite');
+        var nomeTarefa  = $(this).closest('tr').find('td[data-nome]').data('nome');
+        var prioridade  = $(this).closest('tr').find('td[data-prioridade]').data('prioridade');
+        var dataLimite  = $(this).closest('tr').find('td[data-limite]').data('limite');
         var responsavel = $(this).closest('tr').find('td[data-responsavel]').data('responsavel');
+        var taskId      = $(this).closest('tr').find('td[data-id]').data('id');
+
         
         $('input[name=taskName]').val(nomeTarefa);
         $('input[name=date]').val(dataLimite);
+        $('input[name=idTask]').val(taskId);
 
         $.each($('#priorityName option'),(index, element) => {
             if($(element).val() == prioridade)
@@ -315,4 +327,128 @@ $(document).ready(() => {
         
     });
 
+    $('.edit').click(() => {
+        
+        var taskId = $('input[name=idTask]').val();
+        var taskName = $('input[name=taskName]').val();
+        var responsavelId = $(".resp option:selected").val();
+        var priorityId = $("#priorityName option:selected").val();
+        var date = $('input[name=date]').val();
+        
+        for(i=0;i<object.length;i++)
+        {
+            if(object[i].id == taskId)
+            {
+                object[i].nome = taskName;
+                object[i].responsavel_id = responsavelId;
+                object[i].prioridade_id = priorityId;
+                var data = new Date();
+
+                if(typeof date == 'undefined' || date == '')
+                    date = dateCalculator(priorityId, data);
+                
+                object[i].data_limite = date;
+                
+                localStorage.setItem("tasks", JSON.stringify(object));
+
+                alert('Status Alterado com sucesso');
+                document.location.reload();
+            }
+        }
+    })
+
+    $('.remove').click(() => {
+        var taskId = $('input[name=idTask]').val();
+        removerPela('id', taskId);
+
+        localStorage.setItem("tasks", JSON.stringify(object));
+        alert('Tarefa Removida com Sucesso');
+        document.location.reload();
+    })
+
+    function removerPela(chave, valor){
+        object = object.filter(function(jsonObject) {
+            return jsonObject[chave] != valor;
+        });
+    }
+
+    function dateCalculator(priorityId, date)
+    {
+        if(priorityId == 1)
+        {
+            var hora = date.getHours();
+            var newDate = new Date();
+            var teste = hora + 2;
+            newDate.setHours(hora + 2);
+            newDate.setMinutes(0);
+            return newDate;
+        }
+        if(priorityId == 2)
+        {
+            var hora = date.getHours();
+            var newDate = new Date();
+            var teste = hora + 2;
+            newDate.setHours(teste);
+            newDate.setMinutes(0);
+            return newDate;
+        }
+        if(priorityId == 3)
+        {
+            var hora = date.getHours();
+            var newDate = new Date();
+            newDate.setHours(hora + 8);
+            newDate.setMinutes(0);
+            return newDate;
+        }
+        if(priorityId == 4)
+        {
+            var hora = date.getHours();
+            var newDate = new Date();
+            newDate.setHours(hora + 12);
+            newDate.setMinutes(0);
+            return newDate;
+        }
+        if(priorityId == 5)
+        {
+            var hora = date.getHours();
+            var newDate = new Date();
+            newDate.setHours(hora + 24);
+            newDate.setMinutes(0);
+            return newDate;
+        }
+    }
+
+    $(document).on("click", ".checktask", function(){
+        var taskId      = $(this).closest('tr').find('td[data-id]').data('id');
+        var name = 'switch'+taskId;
+
+        $('#'+name).change(() => {
+            alert(this.checked);
+            if(!this.checked)
+            {
+                for(i=0;i<object.length;i++)
+                {
+                    if(taskId == object[i].id)
+                    {
+                        object[i].status = 'Não Finalizado';
+                        localStorage.setItem("tasks", JSON.stringify(object));
+                        document.location.reload();
+                    }
+                }
+            }
+            else
+            {
+                for(i=0;i<object.length;i++)
+                {
+                    if(taskId == object[i].id)
+                    {
+                        object[i].status = 'Concluido';
+                        localStorage.setItem("tasks", JSON.stringify(object));
+                        alert('Parabens, você concluiu uma tarefa com sucesso');
+                        document.location.reload();
+                    }
+                }
+            }
+        })
+    })
 });

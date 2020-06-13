@@ -239,6 +239,7 @@
                                       <th>Status</th>
                                       <th>Grau de Prioridade</th>
                                       <th>Hora limite para conclusão</th>
+                                      <th>Concluído </th>
                                       <th>Ações</th>
                                     </tr>
                                   </thead>
@@ -273,7 +274,7 @@
 
 
         <!--  Modal content for the above example -->
-        <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" id="myModalTask" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -283,6 +284,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="idTask">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -323,8 +325,8 @@
                         </div>
                         <div class="row">
                         </div>
-                        <button class="btn btn-primary" id="editTask" type="submit">Editar Tarefa</button>
-                        <button class="btn btn-danger"  id="removeTask" type="submit">Excluir Tarefa</button>
+                        <button class="btn btn-primary edit" id="editTask" type="submit">Editar Tarefa</button>
+                        <button class="btn btn-danger remove"  id="removeTask" type="submit">Excluir Tarefa</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
