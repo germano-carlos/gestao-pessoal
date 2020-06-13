@@ -229,7 +229,7 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title mb-4">Ultimas Tarefas</h4>
                             <div class="table-responsive">
-                                <table class="table table-nowrap mb-0">
+                                <table class="table table-nowrap mb-0" id="task-table">
                                     <thead>
                                     <tr>
                                       <th>User</th>
@@ -287,10 +287,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Nome da Tarefa</label>
-                                    <input type="text" class="form-control" value="Dar banho no dog" id="validationCustom01" placeholder="Insira o nome da tarefa" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
+                                    <input type="text" class="form-control" name="taskName" id="validationCustom01" placeholder="Insira o nome da tarefa" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -306,20 +303,20 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom03">Qual a dificuldade da tarefa </label>
-                                    <select class="form-control">
+                                    <select class="form-control" id="priorityName" name="priorityName">
                                         <option> -- Selecione a Dificuldade -- </option>
-                                        <option>Muito Alta  </option>
-                                        <option>  Alta  </option>
-                                        <option>  Média  </option>
-                                        <option>  Baixa  </option>
-                                        <option selected>  Muito Baixa  </option>
+                                        <option value="1">  Muito Alta  </option>
+                                        <option value="2">  Alta  </option>
+                                        <option value="3">  Média  </option>
+                                        <option value="4">  Baixa  </option>
+                                        <option value="5">  Muito Baixa  </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom04">Existe um limite de data? Se sim, informe pra gente por favor :)</label>
-                                    <input type="text" class="form-control" value="2020-06-08 23:59:59" id="validationCustom04" placeholder="Insira uma data no modelo YYYY-MM-DD HH24:MI:SS" required>
+                                    <input type="text" class="form-control" name="date" id="validationCustom04" placeholder="Insira uma data no modelo YYYY-MM-DD HH24:MI:SS" required>
                                     
                                 </div>
                             </div>
