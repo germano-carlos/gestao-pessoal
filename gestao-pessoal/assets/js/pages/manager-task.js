@@ -131,27 +131,27 @@ $(document).ready(() => {
                 return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-danger mr-1',
-                        });;
+                        });
             }
             else if(diff < 2)
             {   
                 return JSON.stringify({
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
-                        });;
+                        });
             }
             else if(done)
             {   
                 return JSON.stringify({
                     event: 'Concluído',
                     tag : 'text-success mr-1'
-                    });;
+                    });
             }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
                     tag : 'text-info mr-1'
-                    });;
+                    });
             }
         }
         if(prioridade == 2)
@@ -161,25 +161,25 @@ $(document).ready(() => {
                 return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-danger mr-1',
-                        });;
+                        });
             }
             else if(diff < 4)
             {   return JSON.stringify({
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
-                        });;
+                        });
             }
             else if(done)
             {   return JSON.stringify({
                     event: 'Concluido',
                     tag : 'text-success mr-1'
-                    });;
+                    });
             }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
                     tag : 'text-info mr-1'
-                    });;
+                    });
             }
         }
         if(prioridade == 3)
@@ -189,25 +189,25 @@ $(document).ready(() => {
                 return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-danger mr-1',
-                        });;
+                        });
             }
             else if(diff < 8)
             {   return JSON.stringify({
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
-                        });;
+                        });
             }
             else if(done)
             {   return JSON.stringify({
                     event: 'Concluido',
                     tag : 'text-success mr-1'
-                    });;
+                    });
             }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
                     tag : 'text-info mr-1'
-                    });;
+                    });
             }
         }
         if(prioridade == 4)
@@ -217,25 +217,25 @@ $(document).ready(() => {
                 return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-danger mr-1',
-                        });;
+                        });
             }
             else if(diff < 6)
             {   return JSON.stringify({
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
-                        });;
+                        });
             }
             else if(done)
             {   return JSON.stringify({
                     event: 'Concluido',
                     tag : 'text-success mr-1'
-                    });;
+                    });
             }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
                     tag : 'text-info mr-1'
-                    });;
+                    });
             }
         }
         if(prioridade == 5)
@@ -245,25 +245,25 @@ $(document).ready(() => {
                 return JSON.stringify({
                         event: 'Atrasado',
                         tag : 'text-danger mr-1',
-                        });;
+                        });
             }
             else if(diff < 12)
             {   return JSON.stringify({
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
-                        });;
+                        });
             }
             else if(done)
             {   return JSON.stringify({
                     event: 'Concluido',
                     tag : 'text-success mr-1'
-                    });;
+                    });
             }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
                     tag : 'text-info mr-1'
-                    });;
+                    });
             }
         }
     }

@@ -237,16 +237,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="validationCustom01">Nome da Tarefa</label>
-                                                <input type="text" class="form-control" id="validationCustom01" placeholder="Insira o nome da tarefa" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
+                                                <input type="text" class="form-control" name="taskName" id="validationCustom01" placeholder="Insira o nome da tarefa" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="validationCustom02">Responsável pela tarefa</label>
-                                                <select class="form-control resp">
+                                                <select class="form-control resp" name="resp">
                                                     <option> -- Selecione o Responsável -- </option>
                                                     <div id="listresponsavel"></div>
                                                 </select>
@@ -257,27 +254,27 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="validationCustom03">Qual a dificuldade da tarefa </label>
-                                                <select class="form-control">
-                                                    <option> -- Selecione a Dificuldade -- </option>
-                                                    <option>Muito Alta  </option>
-                                                    <option>  Alta  </option>
-                                                    <option>  Média  </option>
-                                                    <option>  Baixa  </option>
-                                                    <option>  Muito Baixa  </option>
+                                                <select class="form-control" id="priorityName" name="priorityName">
+                                                    <option value="0"> -- Selecione a Dificuldade -- </option>
+                                                    <option value="1">  Muito Alta  </option>
+                                                    <option value="2">  Alta  </option>
+                                                    <option value="3">  Média  </option>
+                                                    <option value="4">  Baixa  </option>
+                                                    <option value="5">  Muito Baixa  </option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="validationCustom04">Existe um limite de data? Se sim, informe pra gente por favor :)</label>
-                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Insira uma data no modelo YYYY-MM-DD HH24:MI:SS" required>
+                                                <input type="text" class="form-control" name="date" id="validationCustom04" placeholder="Insira uma data no modelo YYYY-MM-DD HH24:MI:SS" required>
                                                 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                     </div>
-                                    <button class="btn btn-primary" type="submit">Criar Tarefa</button>
+                                    <button class="btn btn-primary" id="createTask" type="submit">Criar Tarefa</button>
                                 </form>
                                 
 
@@ -309,35 +306,17 @@
 
 
        
-        <!-- Scripts de páginas -->
-        <script src="assets/js/database/index.js" type="text/javascript"></script>
 
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/jquery.slimscroll.js"></script>
         <script src="assets/js/waves.min.js"></script>
-        <script>
-            $(document).ready(() => {
-                var persona;
-                let contador = 0;
-                let dependentes = localStorage.getItem("dependentes").split(',')
-                let optionString = `<option value= ${ localStorage.getItem("id") }> ${ localStorage.getItem("nome") } </option> `;
 
-                for(i = 0; i < db.customerdata.length; i++)
-                {
-                    for (j = 0; j < dependentes.length; j++)
-                    {
-                        if(db.customerdata[i].id == dependentes[j])
-                        {
-                            optionString += `<option value= ${ db.customerdata[i].id }> ${ db.customerdata[i].nome } </option>`;
-                        }
-                    }
-                }
-
-                $('.resp').append(optionString)
-            });
-        </script>
+        
+        <!-- Scripts de páginas -->
+        <script src="assets/js/database/index.js" type="text/javascript"></script>
+        <script src="assets/js/pages/create-task.js" type="text/javascript"></script>
         <!-- App js -->
         <script src="assets/js/app.js"></script>
         
