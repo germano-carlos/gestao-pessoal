@@ -423,7 +423,7 @@ $(document).ready(() => {
         var name = 'switch'+taskId;
 
         $('#'+name).change(() => {
-            alert(this.checked);
+
             if(!this.checked)
             {
                 for(i=0;i<object.length;i++)
