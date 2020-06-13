@@ -40,7 +40,19 @@ $(document).ready(() => {
         var diffMinutos = diffSegundos / 60;
         var diffHoras = diffMinutos / 60;
 
-        var text_icon = deparaTempo(diffHoras, object[i].prioridade_id, false);
+        var timeSettings = JSON.parse(deparaTempo(diffHoras, object[i].prioridade_id, false));
+        var text_icon = timeSettings.tag;
+        var text = timeSettings.event;
+
+        var responsavelName = localStorage.getItem("nome");
+
+        for(j=0;j<db.customerdata.length;j++)
+        {
+            if(db.customerdata[j].id == object[i].responsavel_id)
+            {
+                responsavelName = db.customerdata[j].nome;
+            }
+        }
 
         htmlTask += `<tr>' 
                         <td style="width: 60px;">
@@ -49,12 +61,12 @@ $(document).ready(() => {
                         <td> ${ localStorage.getItem("nome") }
                            <p class="m-0 text-muted">On 02 Jun, 2019</p>
                         </td>
-                        <td>Marcelo Teixeira</td>
+                        <td>${ responsavelName }</td>
                         <td>
                             ${ object[i].nome } 
                         </td>
                         <td>
-                            <i class="mdi mdi-checkbox-blank-circle ${text_icon}"></i> Atrasado
+                            <i class="mdi mdi-checkbox-blank-circle ${text_icon}"></i> ${text}
                         </td>
                         <td>
                             ${ settings.Nome }
@@ -124,75 +136,110 @@ $(document).ready(() => {
         {
             if(diff < 1)
             {
-                return 'text-danger mr-1';
+                return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-danger mr-1',
+                        });;
             }
             else if(diff < 2)
-            {
-                return 'text-warning mr-1';
+            {   return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-warning mr-1'
+                        });;
             }
             else if(done)
-            {
-                return 'text-success mr-1';
+            {   return JSON.stringify({
+                    event: 'Atrasado',
+                    tag : 'text-success mr-1'
+                    });;
             }
         }
         if(prioridade == 2)
         {
             if(diff < 2)
             {
-                return 'text-danger mr-1';
+                return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-danger mr-1',
+                        });;
             }
             else if(diff < 4)
-            {
-                return 'text-warning mr-1';
+            {   return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-warning mr-1'
+                        });;
             }
             else if(done)
-            {
-                return 'text-success mr-1';
+            {   return JSON.stringify({
+                    event: 'Atrasado',
+                    tag : 'text-success mr-1'
+                    });;
             }
         }
         if(prioridade == 3)
         {
             if(diff < 4)
             {
-                return 'text-danger mr-1';
+                return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-danger mr-1',
+                        });;
             }
             else if(diff < 8)
-            {
-                return 'text-warning mr-1';
+            {   return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-warning mr-1'
+                        });;
             }
             else if(done)
-            {
-                return 'text-success mr-1';
+            {   return JSON.stringify({
+                    event: 'Atrasado',
+                    tag : 'text-success mr-1'
+                    });;
             }
         }
         if(prioridade == 4)
         {
             if(diff < 3)
             {
-                return 'text-danger mr-1';
+                return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-danger mr-1',
+                        });;
             }
             else if(diff < 6)
-            {
-                return 'text-warning mr-1';
+            {   return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-warning mr-1'
+                        });;
             }
             else if(done)
-            {
-                return 'text-success mr-1';
+            {   return JSON.stringify({
+                    event: 'Atrasado',
+                    tag : 'text-success mr-1'
+                    });;
             }
         }
         if(prioridade == 5)
         {
             if(diff < 6)
             {
-                return 'text-danger mr-1';
+                return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-danger mr-1',
+                        });;
             }
             else if(diff < 12)
-            {
-                return 'text-warning mr-1';
+            {   return JSON.stringify({
+                        event: 'Atrasado',
+                        tag : 'text-warning mr-1'
+                        });;
             }
             else if(done)
-            {
-                return 'text-success mr-1';
+            {   return JSON.stringify({
+                    event: 'Atrasado',
+                    tag : 'text-success mr-1'
+                    });;
             }
         }
     }
