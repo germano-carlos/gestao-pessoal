@@ -35,7 +35,7 @@ function submitFunction(event) {
                     }
                 }
 
-                localStorage.setItem("tasks", task);
+                localStorage.setItem("tasks", JSON.stringify(task));
                 alert("Usuario encontrado, você será redirecionado");
                 window.location.replace("home.html")
             }

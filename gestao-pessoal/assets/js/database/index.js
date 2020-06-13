@@ -24,8 +24,8 @@ var db = {
             "prioridade_id": 1,
             "responsavel_id": 1,
             "possui_dependente": false,
-            "data_cadastro":"2020-06-07",
-            "data_limite": null
+            "data_cadastro": null,
+            "data_limite": '2020-06-07 20:50:00'
         },
         {
             "id": 2,
