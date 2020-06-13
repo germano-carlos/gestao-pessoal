@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Veltrix - Admin Dashboard Template | Themesbrand</title>
+        <title>Tarefas - Gestão Pessoal</title>
         <meta content="Responsive admin theme build on top of Bootstrap 4" name="description" />
         <meta content="Themesbrand" name="author" />
         <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -27,8 +27,8 @@
                         <!-- Logo container-->
                         <div class="logo">
                             <a href="home.html" class="logo">
-                                <img src="assets/images/logo-sm.png" alt="" class="logo-small">
-                                <img src="assets/images/logo-light.png" alt="" class="logo-large">
+                                <img  alt="" class="logo-small">
+                                <img  alt="" class="logo-large">
                             </a>
                         </div>
                         <!-- End Logo container-->
@@ -377,9 +377,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="validationCustom02">Responsável pela tarefa</label>
-                                    <select class="form-control">
+                                    <select class="form-control resp">
                                         <option> -- Selecione o Responsável -- </option>
-                                        <option selected >Marcelo Teixeira</option>
                                     </select>
                                 </div>
                             </div>
@@ -408,8 +407,8 @@
                         </div>
                         <div class="row">
                         </div>
-                        <button class="btn btn-primary" type="submit">Editar Tarefa</button>
-                        <button class="btn btn-danger" type="submit">Excluir Tarefa</button>
+                        <button class="btn btn-primary" id="editTask" type="submit">Editar Tarefa</button>
+                        <button class="btn btn-danger"  id="removeTask" type="submit">Excluir Tarefa</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -418,37 +417,19 @@
 
 
        
-        <!-- Scripts de páginas -->
-        <script src="assets/js/database/index.js" type="text/javascript"></script>
 
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/jquery.slimscroll.js"></script>
         <script src="assets/js/waves.min.js"></script>
-        <script>
-            $(document).ready(() => {
-                var persona;
-                let contador = 0;
-                let dependentes = localStorage.getItem("dependentes").split(',')
-                let optionString = `<option value= ${ localStorage.getItem("id") }> ${ localStorage.getItem("nome") } </option> `;
 
-                for(i = 0; i < db.customerdata.length; i++)
-                {
-                    for (j = 0; j < dependentes.length; j++)
-                    {
-                        if(db.customerdata[i].id == dependentes[j])
-                        {
-                            optionString += `<option value= ${ db.customerdata[i].id }> ${ db.customerdata[i].nome } </option>`;
-                        }
-                    }
-                }
-
-                $('.resp').append(optionString)
-            });
-        </script>
         <!-- App js -->
         <script src="assets/js/app.js"></script>
+        
+        <!-- Scripts de páginas -->
+        <script src="assets/js/database/index.js" type="text/javascript"></script>
+        <script src="assets/js/pages/manager-task.js" type="text/javascript"></script>
         
 
     </body>

@@ -8,6 +8,7 @@ function submitFunction(event) {
     for (i = 0; i < db.customerdata.length; i++) {
             if (inputEmail == db.customerdata[i].email && inputSenha == db.customerdata[i].senha) 
             {
+                let task = [];
                 check = true;
                 
                 localStorage.setItem("id",db.customerdata[i].id)
@@ -15,7 +16,26 @@ function submitFunction(event) {
                 localStorage.setItem("nome",db.customerdata[i].nome)
                 localStorage.setItem("dependentes",db.customerdata[i].dependentes)
                 localStorage.setItem("sexo",db.customerdata[i].sexo)
+                
+                for(k = 0; k < db.tasksdata.length; k++)
+                {
+                    if((db.customerdata[i].id == db.tasksdata[k].responsavel_id))
+                    {
+                        task.push(db.tasksdata[k]);
+                    }
+                    else if (db.tasksdata[k].possui_dependente)
+                    {
+                        for(j = 0; j < db.customerdata[i].dependentes.length; j++)
+                        {
+                            if(db.customerdata[i].dependentes[j] == db.tasksdata[k].responsavel_id)
+                            {
+                                task.push(db.tasksdata[k]);
+                            }
+                        }
+                    }
+                }
 
+                localStorage.setItem("tasks", task);
                 alert("Usuario encontrado, você será redirecionado");
                 window.location.replace("home.html")
             }

@@ -31,7 +31,7 @@ var db = {
             "id": 2,
             "nome": "Fazer compras",
             "prioridade_id": 2,
-            "responsavel_id": 1,
+            "responsavel_id": 2,
             "possui_dependente": true,
             "data_cadastro":"2020-06-07",
             "data_limite": "2020-06-07 17:00:00"
@@ -40,8 +40,8 @@ var db = {
             "id": 3,
             "nome": "Levar o juninho pra passear",
             "prioridade_id": 3,
-            "responsavel_id": 1,
-            "possui_dependente": false,
+            "responsavel_id": 3,
+            "possui_dependente": true,
             "data_cadastro":"2020-06-07",
             "data_limite": "2020-06-07 09:00:00"
         },
@@ -49,7 +49,7 @@ var db = {
             "id": 4,
             "nome": "Pagar as contas da minha avó",
             "prioridade_id": 4,
-            "responsavel_id": 1,
+            "responsavel_id": 3,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
             "data_limite": null
@@ -58,7 +58,7 @@ var db = {
             "id": 5,
             "nome": "Comprar um telefone novo",
             "prioridade_id": 5,
-            "responsavel_id": 1,
+            "responsavel_id": 4,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
             "data_limite": null
@@ -67,7 +67,7 @@ var db = {
             "id": 6,
             "nome": "Entregar trabalho de TIAW",
             "prioridade_id": 1,
-            "responsavel_id": 1,
+            "responsavel_id": 4,
             "possui_dependente": false,
             "data_cadastro":"2020-06-07",
             "data_limite": null
