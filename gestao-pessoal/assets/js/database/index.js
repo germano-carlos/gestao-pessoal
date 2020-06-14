@@ -6,7 +6,8 @@ var db = {
             "email": "germano.carlos2712@gmail.com",
             "senha": "123456",
             "dependentes": ['2'],
-            "sexo": "M"
+            "sexo": "M",
+            "status": 'active'
         },
         {
             "id": 2,
@@ -14,7 +15,17 @@ var db = {
             "email": "blablabla@gmail.com",
             "senha": "123456",
             "dependentes": [],
-            "sexo": "M"
+            "sexo": "M",
+            "status": 'active'
+        },
+        {
+            "id": 200,
+            "nome": "Marcelo Teixeira",
+            "email": "blablabla@gmail.com",
+            "senha": "123456",
+            "dependentes": [],
+            "sexo": "M",
+            "status": 'inactive'
         }
     ],
     tasksdata: [
