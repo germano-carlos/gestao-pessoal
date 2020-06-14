@@ -7,70 +7,86 @@ $(document).ready(() => {
 
     let htmlTask = '';
     var object = JSON.parse(localStorage.getItem("tasks"));
+    var dependentes = localStorage.getItem("dependentes").split(',')
 
-    for(i = 0;i < object.length;i++)
+    for(i = 0;i < db.customerdata.length ;i++)
     {
-        var settings = JSON.parse(getSettings(object[i].prioridade_id));
-        var dataInicio = new Date();
-        var dataFim = new Date(object[i].data_limite);
-    
-        var diffMilissegundos = dataFim - dataInicio;
-        var diffSegundos = diffMilissegundos / 1000;
-        var diffMinutos = diffSegundos / 60;
-        var diffHoras = diffMinutos / 60;
-
-        var timeSettings = JSON.parse(deparaTempo(diffHoras, object[i].prioridade_id, false));
-        var text_icon = timeSettings.tag;
-        var text = timeSettings.event;
-
-        var responsavelName = localStorage.getItem("nome");
-        var responsavelId = localStorage.getItem("id");
-        var status = object[i].status == 'Concluido' ? 'checked'  : '';
-
-        for(j=0;j<db.customerdata.length;j++)
+        if(db.customerdata[i].id == localStorage.getItem("id"))
         {
-            if(db.customerdata[j].id == object[i].responsavel_id)
+            for(k = 0;k < db.customerdata.length ;k++)
             {
-                responsavelName = db.customerdata[j].nome;
-                responsavelId = db.customerdata[j].id;
+                for(j = 0;j < dependentes.length ;j++)
+                {
+                    if(db.customerdata[k].id == dependentes[j])
+                    {
+                        htmlTask += montaHTML(dependentes[j]);
+                    }
+                }
             }
         }
+    }
 
-        htmlTask += `<tr class="task-item">' 
-                        <td data-id="${object[i].id}" style="width: 60px;">
+    $('.list-task').html(htmlTask)
+
+    function montaHTML(dependent_id)
+    {
+        var dependent = JSON.parse(getData(dependent_id));
+
+        return htmlTask = `<tr class="task-item">' 
+                        <td data-id="${ dependent.id }" style="width: 60px;">
                             <img src="assets/images/users/user-2.jpg" alt="" class="thumb-sm rounded-circle">
                         </td>
-                        <td data-nome="${object[i].nome}" > ${ localStorage.getItem("nome") }
+                        <td data-nome="${dependent.nome}" > ${dependent.nome}
                            <p class="m-0 text-muted">On 02 Jun, 2019</p>
                         </td>
-                        <td data-responsavel="${responsavelId}">
-                            ${ responsavelName }</td>
-                        <td>
-                            ${ object[i].nome } 
-                        </td>
-                        <td data-prioridade="${ object[i].prioridade_id }">
-                            <i class="mdi mdi-checkbox-blank-circle ${text_icon}"></i> ${text}
+                        <td data-responsavel="2">
+                            ${dependent.tarefas}
                         </td>
                         <td>
-                            ${ settings.Nome }
-                            <p class="m-0 text-muted ">Uma tarefa com essa dificuldade pode ser conclúida em até ${ settings.tempo } horas</p>
+                            ${dependent.sexo}
                         </td>
-                        <td data-limite="${object[i].data_limite}">
-                            ${ object[i].data_limite == null ? 'Não Especificado' : object[i].data_limite }
-                        </td>
-                        <td>
-                            <input ${status} class="checktask" name="switch${object[i].id}" type="checkbox" id="switch${object[i].id}" switch="bool"/>
-                            <label for="switch${object[i].id}" data-on-label="Yes" data-off-label="No"></label>
+                        <td data-prioridade="1">
+                            ${dependent.email}
                         </td>
                         <td>
-                            <div>
-                                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-xl">Edit</a>
-                            </div>
+                            <input checked class="checkdep" name="switch${db.customerdata[i].id}" type="checkbox" id="switch${db.customerdata[i].id}" switch="bool"/>
+                            <label for="switch${db.customerdata[i].id}" data-on-label="Yes" data-off-label="No"></label>
                         </td>
                     </tr>`
     }
 
-    $('.list-task').html(htmlTask)
+    function getData(dependent_id)
+    {
+        for(i=0;i<db.customerdata.length;i++)
+        {
+            var count = 0;
+
+            if(db.customerdata[i].id == dependent_id)
+            {
+                var tasks = JSON.parse(localStorage.getItem("tasks"));
+                for(j=0; j < tasks.length; j++)
+                {
+                    if(tasks[j].responsavel_id == dependent_id)
+                    {
+                        count++;
+                    }
+                }
+
+                var json = JSON.stringify({
+                    id: db.customerdata[i].id,
+                    nome: db.customerdata[i].nome,
+                    sexo: db.customerdata[i].sexo == 'M' ? 'Masculino' : 'Feminino',
+                    email: db.customerdata[i].email,
+                    status: db.customerdata[i].status,
+                    tarefas: count
+                });
+
+                break;
+            }
+        }
+
+        return json;
+    }
 
     /**
      * 
@@ -274,27 +290,6 @@ $(document).ready(() => {
             }
         }
     }
-
-    /**
-     * Carrega a dinâmica de dependentes MODAL
-     */
-
-
-    let dependentes = localStorage.getItem("dependentes").split(',')
-    let optionString = `<option value= ${ localStorage.getItem("id") }> ${ localStorage.getItem("nome") } </option> `;
-
-    for(i = 0; i < db.customerdata.length; i++)
-    {
-        for (j = 0; j < dependentes.length; j++)
-        {
-            if(db.customerdata[i].id == dependentes[j])
-            {
-                optionString += `<option value= ${ db.customerdata[i].id }> ${ db.customerdata[i].nome } </option>`;
-            }
-        }
-    }
-
-    $('.resp').append(optionString)
 
     /**
      *  Validação do click do modal para começar a edição da tarefa
