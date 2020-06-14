@@ -1,9 +1,10 @@
 $(document).ready(() => {
     db.customerdata = JSON.parse(localStorage.getItem("users"));
 
-    let htmlTask = '';
+
     var object = JSON.parse(localStorage.getItem("tasks"));
     var dependentes = localStorage.getItem("dependentes").split(',')
+    var htmlTask = montaHTML(localStorage.getItem("id"));
 
     for(i = 0;i < db.customerdata.length ;i++)
     {
