@@ -12,7 +12,7 @@ function submitFunction(event) {
                 check = true;
                 
                 localStorage.setItem("id",db.customerdata[i].id)
-                localStorage.setItem("email",db.customerdata[i].id)
+                localStorage.setItem("email",db.customerdata[i].email)
                 localStorage.setItem("nome",db.customerdata[i].nome)
                 localStorage.setItem("dependentes",db.customerdata[i].dependentes)
                 localStorage.setItem("sexo",db.customerdata[i].sexo)

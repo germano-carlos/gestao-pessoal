@@ -5,7 +5,7 @@ var db = {
             "nome": "Carlos Germano Avelar Carvalho",
             "email": "germano.carlos2712@gmail.com",
             "senha": "123456",
-            "dependentes": ['2','3'],
+            "dependentes": ['2'],
             "sexo": "M"
         },
         {

@@ -5,8 +5,11 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Home - Gestão Pessoal</title>
+        <title>Criar Tarefas - Gestão Pessoal</title>
+        <meta content="Responsive admin theme build on top of Bootstrap 4" name="description" />
+        <meta content="Themesbrand" name="author" />
         <link rel="shortcut icon">
+
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
@@ -195,6 +198,26 @@
                 </div> <!-- end navbar-custom -->
             </header>
             <!-- End Navigation Bar-->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 class="page-title">Criação de Dependentes</h4>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);"><i class="mdi mdi-home-outline"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Dependentes</a></li>
+                                        <li class="breadcrumb-item active">Criar Dependente</li>
+                                    </ol>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                        <!-- end page title -->
+                    </div> <!-- end col -->
+                </div> <!-- end row-->
+            </div>
         </div>
         <!-- end header-bg -->
         
@@ -202,12 +225,46 @@
         <div class="wrapper">
             <div class="container-fluid">                
                 <div class="row">
-                    <div class="col-4">
-                        teste
+                    <div class="col-8" style="margin: 0 auto;">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h4 class="mt-0 header-title">Estamos aqui para ajudar, vamos começar criando um dependente ?</h4>
+                                <p class="text-muted mb-4">Sabemos muitas das vezes o quão importante é a finalização de uma tarefa no seu dia a dia, mais muitas das vezes não é você quem irá efetua-lá, e é para isso que criamos este espaço
+                                <br><strong>Aqui você conseguirá criar quantos dependentes você quiser, de forma a facilitar o seu dia a dia</strong></p>
+
+                                <form class="needs-validation" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="validationCustom01">Nome do Dependente</label>
+                                                <input type="text" class="form-control" name="dependentname" placeholder="Insira o Nome do Dependente" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="validationCustom01">E mail do Dependente</label>
+                                                <input type="text" class="form-control" name="dependentemail" placeholder="Insira o e mail do Dependente" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="validationCustom03">Qual o sexo do seu dependente?</label>
+                                                <select class="form-control dep" id="dependentSex" name="dependentSex">
+                                                    <option value="0"> -- Selecione o Sexo -- </option>
+                                                    <option value="M">  Masculino  </option>
+                                                    <option value="F">  Feminino  </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" id="createDependents" type="submit">Criar Dependente</button>
+                                </form>
+                                
+
+                            </div>
+                        </div>
                     </div> <!-- end col -->
-                    <div class="col-8">
-                        teste
-                    </div>
                 </div> <!-- end row -->
 
             </div>
@@ -215,13 +272,12 @@
         </div>
         <!-- page wrapper end -->
 
-
         <!-- Footer -->
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        2020 © Gestão de Pessoas
+                        2020 © Gestão Pessoal
                     </div>
                 </div>
             </div>
@@ -229,12 +285,18 @@
         <!-- End Footer -->
 
 
+       
+
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/jquery.slimscroll.js"></script>
         <script src="assets/js/waves.min.js"></script>
 
+        
+        <!-- Scripts de páginas -->
+        <script src="assets/js/database/index.js" type="text/javascript"></script>
+        <script src="assets/js/pages/create-depedents.js" type="text/javascript"></script>
         <!-- App js -->
         <script src="assets/js/app.js"></script>
         
