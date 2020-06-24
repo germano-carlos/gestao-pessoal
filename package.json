@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/germano-carlos/gestao-pessoal.git",
   "author": "Carlos Germano <germano.carlos2712@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "index.html"
+  }
 }
