@@ -1,0 +1,9 @@
+{
+  "name": "gestao-pessoal",
+  "version": "1.0.0",
+  "description": "Software - TIAW",
+  "main": "index.js",
+  "repository": "https://github.com/germano-carlos/gestao-pessoal.git",
+  "author": "Carlos Germano <germano.carlos2712@gmail.com>",
+  "license": "MIT"
+}
