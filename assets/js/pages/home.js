@@ -32,7 +32,7 @@ var options = {
         data: arrayElementsAindaTemTempo
     },
     {
-        name: 'Concluido',
+        name: 'Concluído',
         data: arrayElementsConcluido
     }],
     grid: {
@@ -91,12 +91,12 @@ var options = {
             }
         }
     },
-    colors: ['#4090cb', '#06c2de', '#eb6776'],
-    series: [76,67,61],
+    colors: ['#e74c5e', '#FFF83C','#24E1DA', '#00FF54'],
+    series: [countAtrasado, countCuidado, countAindaTemTempo, countConcluido],
     stroke: {
       lineCap: 'round'
     },
-    labels: ['Facebook', 'Twitter', 'Instagram'],
+    labels: ['Atrasado', 'Cuidado', 'Ainda Tem Tempo', 'Concluído'],
     legend: {
         show: true,
         floating: true,

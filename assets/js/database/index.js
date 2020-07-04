@@ -130,7 +130,7 @@ var db = {
     tasksettings: [
         {
             "id":1,
-            "type":"Concluido",
+            "type":"Concluído",
             "text": "text-success mr-1"
         },
         {

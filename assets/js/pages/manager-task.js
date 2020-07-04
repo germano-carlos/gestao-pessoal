@@ -1,11 +1,16 @@
 
     var arrayElementsDependentes = [];
-    var arrayElementsAtrasado = ['1','2'];
-    var arrayElementsCuidado = ['1','3'];
-    var arrayElementsAindaTemTempo = ['1','4'];
-    var arrayElementsConcluido = ['5','2'];
+    var arrayElementsAtrasado = [];
+    var arrayElementsCuidado = [];
+    var arrayElementsAindaTemTempo = [];
+    var arrayElementsConcluido = [];
 
     var info = []; 
+
+    var countAtrasado = 0;
+    var countCuidado = 0;
+    var countAindaTemTempo = 0;
+    var countConcluido = 0;
 
 $(document).ready(() => {
     /**
@@ -30,14 +35,20 @@ $(document).ready(() => {
         var diffMinutos = diffSegundos / 60;
         var diffHoras = diffMinutos / 60;
 
-        var timeSettings = JSON.parse(deparaTempo(diffHoras, object[i].prioridade_id, false));
+        var done = object[i].status == 'Concluído';
+        var timeSettings = JSON.parse(deparaTempo(diffHoras, object[i].prioridade_id, done));
         var text_icon = timeSettings.tag;
         var text = timeSettings.event;
 
         var responsavelName = localStorage.getItem("nome");
         var responsavelId = localStorage.getItem("id");
-        var status = object[i].status == 'Concluido' ? 'checked'  : '';
-        tasksNotComplete = object[i].status != 'Concluido' ? tasksNotComplete + 1  : tasksComplete + 1;
+        var status = object[i].status == 'Concluído' ? 'checked'  : '';
+        tasksNotComplete = !done ? tasksNotComplete + 1  : tasksNotComplete;
+        tasksComplete = done ? tasksComplete + 1  : tasksComplete;
+        countConcluido = tasksComplete;
+        countAtrasado = text == 'Atrasado' ? countAtrasado + 1  : countAtrasado;
+        countCuidado = text == 'Cuidado' ? countCuidado + 1  : countCuidado;
+        countAindaTemTempo = text == 'Ainda tem tempo' ? countAindaTemTempo + 1  : countAindaTemTempo;
 
         for(j=0;j<db.customerdata.length;j++)
         {
@@ -71,7 +82,7 @@ $(document).ready(() => {
             info.push(JSON.parse(stringfyCounts));
         }
 
-        //Percorre o array criado, atualizando as informações baseado na tarefa do FOR
+        //Percorre o array criado, atualizando as informações baseado na tarefa atual do FOR
         for(la=0;la<info.length;la++)
         {
             if(info[la].nome == responsavelName)
@@ -128,6 +139,16 @@ $(document).ready(() => {
 
     $('#notComplete').html(tasksNotComplete);
     $('#complete').html(tasksComplete);
+
+    //Faz o calculo da porcentagem
+    var totalTask = tasksNotComplete + tasksComplete;
+    var valuePerTask = 1 / totalTask;
+    var valueTaskNot = (valuePerTask * tasksNotComplete)*100;
+    var valueTaskCompl = (valuePerTask * tasksComplete)*100;
+
+    //Insere na HomePage
+    $('#complete-percentage').html(valueTaskCompl + '%');
+    $('#notcomplete-percentage').html(valueTaskNot + '%');
 
     /**
      * 
@@ -222,7 +243,14 @@ $(document).ready(() => {
     {
         if(prioridade == 1)
         {
-            if(diff < 1)
+            if(done)
+            {   
+                return JSON.stringify({
+                    event: 'Concluído',
+                    tag : 'text-success mr-1'
+                    });
+            }
+            else if(diff < 1)
             {
                 return JSON.stringify({
                         event: 'Atrasado',
@@ -236,13 +264,6 @@ $(document).ready(() => {
                         tag : 'text-warning mr-1'
                         });
             }
-            else if(done)
-            {   
-                return JSON.stringify({
-                    event: 'Concluído',
-                    tag : 'text-success mr-1'
-                    });
-            }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
@@ -252,7 +273,14 @@ $(document).ready(() => {
         }
         if(prioridade == 2)
         {
-            if(diff < 2)
+            
+            if(done)
+            {   return JSON.stringify({
+                    event: 'Concluído',
+                    tag : 'text-success mr-1'
+                    });
+            }
+            else if(diff < 2)
             {
                 return JSON.stringify({
                         event: 'Atrasado',
@@ -265,12 +293,6 @@ $(document).ready(() => {
                         tag : 'text-warning mr-1'
                         });
             }
-            else if(done)
-            {   return JSON.stringify({
-                    event: 'Concluido',
-                    tag : 'text-success mr-1'
-                    });
-            }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
@@ -280,7 +302,13 @@ $(document).ready(() => {
         }
         if(prioridade == 3)
         {
-            if(diff < 4)
+            if(done)
+            {   return JSON.stringify({
+                    event: 'Concluído',
+                    tag : 'text-success mr-1'
+                    });
+            }
+            else if(diff < 4)
             {
                 return JSON.stringify({
                         event: 'Atrasado',
@@ -293,12 +321,6 @@ $(document).ready(() => {
                         tag : 'text-warning mr-1'
                         });
             }
-            else if(done)
-            {   return JSON.stringify({
-                    event: 'Concluido',
-                    tag : 'text-success mr-1'
-                    });
-            }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
@@ -308,7 +330,13 @@ $(document).ready(() => {
         }
         if(prioridade == 4)
         {
-            if(diff < 3)
+            if(done)
+            {   return JSON.stringify({
+                    event: 'Concluído',
+                    tag : 'text-success mr-1'
+                    });
+            }
+            else if(diff < 3)
             {
                 return JSON.stringify({
                         event: 'Atrasado',
@@ -321,12 +349,6 @@ $(document).ready(() => {
                         tag : 'text-warning mr-1'
                         });
             }
-            else if(done)
-            {   return JSON.stringify({
-                    event: 'Concluido',
-                    tag : 'text-success mr-1'
-                    });
-            }
             else{
                 return JSON.stringify({
                     event: 'Ainda tem tempo',
@@ -336,7 +358,14 @@ $(document).ready(() => {
         }
         if(prioridade == 5)
         {
-            if(diff < 6)
+            
+            if(done)
+            {   return JSON.stringify({
+                    event: 'Concluído',
+                    tag : 'text-success mr-1'
+                    });
+            }
+            else if(diff < 6)
             {
                 return JSON.stringify({
                         event: 'Atrasado',
@@ -348,12 +377,6 @@ $(document).ready(() => {
                         event: 'Cuidado',
                         tag : 'text-warning mr-1'
                         });
-            }
-            else if(done)
-            {   return JSON.stringify({
-                    event: 'Concluido',
-                    tag : 'text-success mr-1'
-                    });
             }
             else{
                 return JSON.stringify({
@@ -533,7 +556,7 @@ $(document).ready(() => {
                 {
                     if(taskId == object[i].id)
                     {
-                        object[i].status = 'Concluido';
+                        object[i].status = 'Concluído';
                         localStorage.setItem("tasks", JSON.stringify(object));
                         alert('Parabens, você concluiu uma tarefa com sucesso');
                         document.location.reload();
