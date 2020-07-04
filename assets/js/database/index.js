@@ -20,12 +20,12 @@ var db = {
         },
         {
             "id": 200,
-            "nome": "Marcelo Teixeira",
+            "nome": "Marcelo Teixeira Dois",
             "email": "blablabla@gmail.com",
             "senha": "123456",
             "dependentes": [],
             "sexo": "M",
-            "status": 'inactive'
+            "status": 'active'
         }
     ],
     tasksdata: [

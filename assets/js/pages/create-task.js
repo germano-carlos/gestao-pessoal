@@ -48,9 +48,9 @@ $(document).ready(() => {
             var seg     = data.getSeconds();        // 0-59
 
             var tasks = JSON.parse(localStorage.getItem("tasks"));
-
+            var id = tasks[0] != null ? tasks[tasks.length-1].id + 1 : 1;
             var newTask = JSON.stringify({
-                id: tasks[tasks.length-1].id + 1,
+                id: id,
                 nome: taskName,
                 prioridade_id: priorityId,
                 responsavel_id: responsavelId,
