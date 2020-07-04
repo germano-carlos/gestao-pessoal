@@ -11,10 +11,11 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        
+       
     </head>
 
     <body>
-
         <div class="header-bg">
             <!-- Navigation Bar-->
             <header id="topnav">
@@ -228,7 +229,7 @@
                                 <i class="dripicons-broadcast bg-soft-primary text-primary float-right h4"></i>
                             </div>
                             <h6 class="text-uppercase mb-3 mt-0">Tarefas Concluídas</h6>
-                            <h5 class="mb-3">X</h5>
+                            <h5 class="mb-3" id="complete"></h5>
                             <p class="text-muted mb-0"><span class="text-success mr-2"> x% <i class="mdi mdi-arrow-up"></i> </span> comparado ao total de tarefas</p>
                         </div>
                     </div>
@@ -240,7 +241,7 @@
                                 <i class="dripicons-box bg-soft-primary text-primary float-right h4"></i>
                             </div>
                             <h6 class="text-uppercase mb-3 mt-0">Tarefas Não Concluídas</h6>
-                            <h5 class="mb-3">X</h5>
+                            <h5 class="mb-3" id="notComplete"></h5>
                             <p class="text-muted mb-0"><span class="text-danger mr-2"> x% <i class="mdi mdi-arrow-down"></i> </span> comparado ao total de tarefas</p>
                         </div>
                     </div>
@@ -315,13 +316,71 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        2020 © Gestão de Pessoas
+                        2020 © Gestão Pessoal
                     </div>
                 </div>
             </div>
         </footer>
         <!-- End Footer -->
 
+        <!--  Modal content for the above example -->
+        <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" id="myModalTask" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Minha tarefa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="idTask">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Nome da Tarefa</label>
+                                    <input type="text" class="form-control" name="taskName" id="validationCustom01" placeholder="Insira o nome da tarefa" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="validationCustom02">Responsável pela tarefa</label>
+                                    <select class="form-control resp">
+                                        <option value="0"> -- Selecione o Responsável -- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="validationCustom03">Qual a dificuldade da tarefa </label>
+                                    <select class="form-control" id="priorityName" name="priorityName">
+                                        <option value="0"> -- Selecione a Dificuldade -- </option>
+                                        <option value="1">  Muito Alta  </option>
+                                        <option value="2">  Alta  </option>
+                                        <option value="3">  Média  </option>
+                                        <option value="4">  Baixa  </option>
+                                        <option value="5">  Muito Baixa  </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="validationCustom04">Existe um limite de data? Se sim, informe pra gente por favor :)</label>
+                                    <input type="text" class="form-control" name="date" id="validationCustom04" placeholder="Insira uma data no modelo YYYY-MM-DD HH24:MI:SS" required>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                        <button class="btn btn-primary edit" id="editTask" type="submit">Editar Tarefa</button>
+                        <button class="btn btn-danger remove"  id="removeTask" type="submit">Excluir Tarefa</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
@@ -332,7 +391,11 @@
         <!-- apexcharts -->
         <script src="./plugins/apexcharts/apexcharts.min.js"></script>
 
-        <script src="assets/pages/dashboard.js"></script>
+        <!-- Scripts de Página -->
+        
+        <script src="./assets/js/database/index.js"></script>
+        <script src="./assets/js/pages/manager-task.js"></script>
+        <script src="./assets/js/pages/home.js"></script>
 
         <!-- App js -->
         <script src="assets/js/app.js"></script>

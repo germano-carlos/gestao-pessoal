@@ -1,3 +1,12 @@
+
+    var arrayElementsDependentes = [];
+    var arrayElementsAtrasado = ['1','2'];
+    var arrayElementsCuidado = ['1','3'];
+    var arrayElementsAindaTemTempo = ['1','4'];
+    var arrayElementsConcluido = ['5','2'];
+
+    var info = []; 
+
 $(document).ready(() => {
     /**
      * Carrega a dinâmica de listar as Tarefas do Local Storage
@@ -7,6 +16,8 @@ $(document).ready(() => {
 
     let htmlTask = '';
     var object = JSON.parse(localStorage.getItem("tasks"));
+    var tasksNotComplete = 0;
+    var tasksComplete = 0;
 
     for(i = 0;i < object.length;i++)
     {
@@ -26,6 +37,7 @@ $(document).ready(() => {
         var responsavelName = localStorage.getItem("nome");
         var responsavelId = localStorage.getItem("id");
         var status = object[i].status == 'Concluido' ? 'checked'  : '';
+        tasksNotComplete = object[i].status != 'Concluido' ? tasksNotComplete + 1  : tasksComplete + 1;
 
         for(j=0;j<db.customerdata.length;j++)
         {
@@ -36,6 +48,43 @@ $(document).ready(() => {
             }
         }
 
+        //Localiza se ja foi inserido este dependente
+        var localizado = false;
+        arrayElementsDependentes.forEach(function(element)
+        {
+            if(element == responsavelName)
+                localizado = true;
+        });
+
+        //Cria ele caso não exista
+        if(!localizado)
+        { 
+            arrayElementsDependentes.push(responsavelName);
+            var stringfyCounts = JSON.stringify({
+                nome: responsavelName,
+                countW:0,
+                countA:0,
+                countC:0,
+                countT:0
+            });
+
+            info.push(JSON.parse(stringfyCounts));
+        }
+
+        //Percorre o array criado, atualizando as informações baseado na tarefa do FOR
+        for(la=0;la<info.length;la++)
+        {
+            if(info[la].nome == responsavelName)
+            {
+                updateState(info[la], text);
+            }
+
+            arrayElementsAtrasado[la] = info[la].countA;
+            arrayElementsAindaTemTempo[la] = info[la].countT;
+            arrayElementsConcluido[la] = info[la].countC;
+            arrayElementsCuidado[la] = info[la].countW;
+        }
+        
         htmlTask += `<tr class="task-item">' 
                         <td data-id="${object[i].id}" style="width: 60px;">
                             <img src="assets/images/users/user-2.jpg" alt="" class="thumb-sm rounded-circle">
@@ -70,7 +119,47 @@ $(document).ready(() => {
                     </tr>`
     }
 
+    /**
+     * Atualizo as informações da home page
+     */
     $('.list-task').html(htmlTask)
+    localStorage.setItem("tasksNotComplete", tasksNotComplete);
+    localStorage.setItem("tasksComplete", tasksComplete);
+
+    $('#notComplete').html(tasksNotComplete);
+    $('#complete').html(tasksComplete);
+
+    /**
+     * 
+     * @param {JSON} jsonInfo 
+     * @param {String} text
+     * Atualiza as informaçoes do JSON em questão 
+     */
+    function updateState(jsonInfo, text){
+    
+        switch(text)
+        {
+            case 'Atrasado':
+                let countA = jsonInfo.countA;
+                jsonInfo.countA = countA + 1;
+            break;
+            case 'Cuidado':
+                let countW = jsonInfo.countW;
+                jsonInfo.countW = countW + 1;
+            break;
+            case 'Concluído':
+                let countC = jsonInfo.countC;
+                jsonInfo.countC = countC + 1;
+            break;
+            case 'Ainda tem tempo':
+                let countT = jsonInfo.countT;
+                jsonInfo.countT = countT + 1;
+            break;
+            default:
+                alert('Não possui nenhum texto parametrizado');
+            break;
+       }
+    }
 
     /**
      * 
