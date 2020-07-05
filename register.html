@@ -29,21 +29,21 @@
                                         <h4 class="font-18 text-center">Crie sua conta grátis</h4>
                                         <p class="text-muted text-center">Para utilizar de nossos serviços crie uma conta</p>
                 
-                                        <form class="form-horizontal mt-5" action="index.html">
+                                        <form class="form-horizontal mt-5">
                 
                                             <div class="form-group">
                                                 <label for="useremail">Email</label>
-                                                <input type="email" class="form-control" id="useremail" placeholder="Insira seu email">
+                                                <input type="email" class="form-control" name="useremail" id="useremail" placeholder="Insira seu email">
                                             </div>
                 
                                             <div class="form-group">
                                                 <label for="username">Nome e Sobrenome</label>
-                                                <input type="text" class="form-control" id="username" placeholder="Insira seu username">
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="Insira seu username">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="validationCustom03">Qual o seu sexo?</label>
-                                                <select class="form-control dep" id="usersexo" name="usersexo">
+                                                <select class="form-control sex" id="usersexo" name="usersexo">
                                                     <option value="0"> -- Selecione o Sexo -- </option>
                                                     <option value="M">  Masculino  </option>
                                                     <option value="F">  Feminino  </option>
@@ -52,13 +52,13 @@
                 
                                             <div class="form-group">
                                                 <label for="userpassword">Senha</label>
-                                                <input type="password" class="form-control" id="userpassword" placeholder="Insira sua senha">
+                                                <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Insira sua senha">
                                             </div>
                         
                 
                                             <div class="form-group row">
                                                 <div class="col-12 text-right">
-                                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Criar minha conta</button>
+                                                    <button id="createAccount" class="btn btn-primary w-md waves-effect waves-light" type="submit">Criar minha conta</button>
                                                 </div>
                                             </div>
                                             
@@ -124,6 +124,8 @@
         <script src="assets/js/jquery.slimscroll.js"></script>
         <script src="assets/js/waves.min.js"></script>
         
+        <!-- Script de pagina -->
+        <script src="./assets/js/pages/register.js"></script>
         <!-- App js -->
         <script src="assets/js/app.js"></script>
         

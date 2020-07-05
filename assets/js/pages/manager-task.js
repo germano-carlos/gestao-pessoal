@@ -533,7 +533,7 @@ $(document).ready(() => {
     }
 
     $(document).on("click", ".checktask", function(){
-        var taskId      = $(this).closest('tr').find('td[data-id]').data('id');
+        var taskId = $(this).closest('tr').find('td[data-id]').data('id');
         var name = 'switch'+taskId;
 
         $('#'+name).change(() => {

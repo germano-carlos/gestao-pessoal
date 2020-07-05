@@ -6,46 +6,55 @@ function submitFunction(event) {
     const inputEmail = document.querySelector('input[name=username]').value;
     const inputSenha = document.querySelector('input[name=userpassword]').value;
     var userRegister = JSON.parse(localStorage.getItem("register"));
+    var ieRegister = false;
 
-    for(j=0;j<userRegister.length;j++)
+    if(userRegister != null)
     {
-        if (inputEmail == userRegister[j].email && inputSenha == userRegister[j].senha) 
+        for(j=0;j<userRegister.length;j++)
         {
-            let task1 = [];
-            check = true;
-            
-            localStorage.setItem("id",userRegister[j].id)
-            localStorage.setItem("email",userRegister[j].email)
-            localStorage.setItem("nome",userRegister[j].nome)
-            localStorage.setItem("dependentes",userRegister[j].dependentes)
-            localStorage.setItem("sexo",userRegister[j].sexo)
-            
-            for(k = 0; k < db.tasksdata.length; k++)
+            if (inputEmail == userRegister[j].email && inputSenha == userRegister[j].senha) 
             {
-                if((userRegister[j].id == db.tasksdata[k].responsavel_id))
+                let task1 = [];
+                check = true;
+                
+                localStorage.setItem("id",userRegister[j].id)
+                localStorage.setItem("email",userRegister[j].email)
+                localStorage.setItem("nome",userRegister[j].nome)
+                localStorage.setItem("dependentes",userRegister[j].dependentes)
+                localStorage.setItem("sexo",userRegister[j].sexo)
+                
+                for(k = 0; k < db.tasksdata.length; k++)
                 {
-                    task1.push(db.tasksdata[k]);
-                }
-                else if (db.tasksdata[k].possui_dependente)
-                {
-                    for(j = 0; j < userRegister[j].dependentes.length; j++)
+                    if((userRegister[j].id == db.tasksdata[k].responsavel_id))
                     {
-                        if(userRegister[j].dependentes[j] == db.tasksdata[k].responsavel_id)
+                        task1.push(db.tasksdata[k]);
+                    }
+                    else if (db.tasksdata[k].possui_dependente)
+                    {
+                        for(j = 0; j < userRegister[j].dependentes.length; j++)
                         {
-                            task1.push(db.tasksdata[k]);
+                            if(userRegister[j].dependentes[j] == db.tasksdata[k].responsavel_id)
+                            {
+                                task1.push(db.tasksdata[k]);
+                            }
                         }
                     }
                 }
+                db.customerdata.push(userRegister[j]);
+    
+                localStorage.setItem("tasks", JSON.stringify(task1));
+                localStorage.setItem("users", JSON.stringify(db.customerdata));
+                ieRegister = true;
+                alert("Usuario encontrado, você será redirecionado");
+                window.location.replace("home.html")
+                break;
             }
-
-            localStorage.setItem("tasks", JSON.stringify(task1));
-            localStorage.setItem("users", JSON.stringify(db.customerdata));
-            alert("Usuario encontrado, você será redirecionado");
-            window.location.replace("home.html")
         }
     }
 
-    for (i = 0; i < db.customerdata.length; i++) {
+    if(!ieRegister)
+    {
+        for (i = 0; i < db.customerdata.length; i++) {
             if (inputEmail == db.customerdata[i].email && inputSenha == db.customerdata[i].senha) 
             {
                 let task = [];
@@ -80,6 +89,7 @@ function submitFunction(event) {
                 alert("Usuario encontrado, você será redirecionado");
                 window.location.replace("home.html")
             }
+        }
     }
 
     if(!check)
